@@ -37,7 +37,7 @@ def predict():
         translater = Translator()
         message1 = translater.translate(message, dest="en")
         pred = hate_speech_predictor(message1.text)
-        return render_template('index.html', prediction=pred, text=message)
+        return pred
 
 
 if __name__ == '__main__':
