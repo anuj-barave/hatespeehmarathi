@@ -1,7 +1,4 @@
 from flask import Flask, render_template, request
-
-
-from googletrans import Translator
 from textblob import TextBlob
 
 app = Flask(__name__)
@@ -34,9 +31,7 @@ def home():
 def predict():
     if request.method == 'POST':
         message = request.form['message']
-        translater = Translator()
-        message1 = translater.translate(message, dest="en")
-        pred = hate_speech_predictor(message1.text)
+        pred = hate_speech_predictor(message)
         return pred
 
 
