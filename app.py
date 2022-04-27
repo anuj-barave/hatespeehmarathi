@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+
 from textblob import TextBlob
 
 app = Flask(__name__)
@@ -32,7 +33,7 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
         pred = hate_speech_predictor(message)
-        return pred
+        return render_template('index.html', prediction=pred, text=message)
 
 
 if __name__ == '__main__':
